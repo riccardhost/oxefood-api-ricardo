@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class ClienteService {
 
-@Autowired
+@Autowired //instancia um obj do tipo repositório
 private ClienteRepository repository;
 
-   @Transactional
+   @Transactional //Abre um bloco de transação no banco de dados
    public Cliente save(Cliente cliente) {
 
        cliente.setHabilitado(Boolean.TRUE);
