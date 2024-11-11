@@ -1,4 +1,3 @@
-
 package br.com.ifpe.oxefood.modelo.cliente;
 
 import jakarta.transaction.Transactional;
@@ -18,5 +17,4 @@ private ClienteRepository repository;
        cliente.setHabilitado(Boolean.TRUE);
        return repository.save(cliente);
    }
-
 }

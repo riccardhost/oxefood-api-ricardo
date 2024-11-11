@@ -27,5 +27,3 @@ public class ClienteController { //classe da Api que define a rota de cliente
        return new ResponseEntity<Cliente>(cliente, HttpStatus.CREATED);
    }
 }
-
-

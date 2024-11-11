@@ -1,0 +1,54 @@
+
+
+
+{
+    "id": 2,
+    "nome": "CRELZA ZACARIAS",
+    "dataNascimento": "2002-08-10",
+    "cpf": "10020030088",
+    "foneCelular": "81 98820.8888",
+    "foneFixo": "81 3030.5050"
+},
+
+
+{
+    "nome": "CRELZA ZACARIAS",
+    "cpf": "10020030088",
+    "rg": "7888666",
+    "dataNascimento": "10/08/2002",
+    "foneCelular": "81 98820.8888",
+    "foneFixo": "81 3030.5050",
+    "entregas": 5,
+    "valorFrete": 55.00,
+    "rua": "Rua Aluizio de Azevedo",
+    "numero": "888",
+    "bairro": "Centro",
+    "cidade": "Recife",
+    "cep": "50000777",
+    "UF": "PE",
+    "complemento": "Próximo ao Shopping Recife",
+    "ativo": "sim"
+},
+
+
+
+{
+    "titulo": "PIZZA MUSSARELA",
+    "codigoProduto": "P0001",
+    "descricao": "pizza 40cm de diâmetro, 250g de mozzarella!",
+    "valorUnitario": "55.00",
+    "tempoMinEntrega": "30",
+    "tempoMaxEntrega": "45"
+}
+
+
+
+
+
+
+
+
+
+
+
+
