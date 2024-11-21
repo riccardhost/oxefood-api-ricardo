@@ -1,6 +1,5 @@
 
 
-
 {
     "id": 2,
     "nome": "CRELZA ZACARIAS",
@@ -29,7 +28,6 @@
     "complemento": "Próximo ao Shopping Recife",
     "ativo": "sim"
 },
-
 
 
 {

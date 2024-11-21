@@ -41,13 +41,13 @@ public class Entregador extends EntidadeAuditavel {
     private String foneFixo;
 
     @Column
-    private int entregas;
+    private String quantidadeEntrega;
 
     @Column
-    private double valorFrete;
+    private String valorFrete;
 
     @Column
-    private String rua;
+    private String endereco;
 
     @Column
     private String numero;
@@ -62,7 +62,7 @@ public class Entregador extends EntidadeAuditavel {
     private String cep;
 
     @Column
-    private String UF;
+    private String uf;
 
     @Column
     private String complemento;

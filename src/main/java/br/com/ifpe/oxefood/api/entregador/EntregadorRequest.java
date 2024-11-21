@@ -2,7 +2,7 @@ package br.com.ifpe.oxefood.api.entregador;
 
 import java.time.LocalDate;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat; //Esta relacionado ao formato JSON da DATA DE NASCIMENTO
 
 import br.com.ifpe.oxefood.modelo.entregador.Entregador;
 import lombok.AllArgsConstructor;
@@ -29,11 +29,11 @@ public class EntregadorRequest {
 
    private String foneFixo;
 
-   private int entregas;
+   private String quantidadeEntrega;
 
-   private double valorFrete;
+   private String valorFrete;
 
-   private String rua;
+   private String endereco;
 
    private String numero;
 
@@ -43,7 +43,7 @@ public class EntregadorRequest {
 
    private String cep;
 
-   private String UF;
+   private String uf;
 
    private String complemento;
 
@@ -58,13 +58,14 @@ public class EntregadorRequest {
             .dataNascimento(dataNascimento)
             .foneCelular(foneCelular)
             .foneFixo(foneFixo)
-            .entregas(entregas)
+            .quantidadeEntrega(quantidadeEntrega)
             .valorFrete(valorFrete)
-            .rua(rua)
+            .endereco(endereco)
             .numero(numero)
             .bairro(bairro)
-            .cidade(cep)
-            .UF(UF)
+            .cidade(cidade)
+            .cep(cep)
+            .uf(uf)
             .complemento(complemento)
             .ativo(ativo)
             .build();
