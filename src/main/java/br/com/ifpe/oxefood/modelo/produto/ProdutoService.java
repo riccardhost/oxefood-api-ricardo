@@ -4,6 +4,7 @@ import jakarta.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
@@ -28,4 +29,20 @@ private ProdutoRepository repository;
 
         return repository.findById(id).get();
     }
+
+    @Transactional
+    public void update(Long id, Produto produtoAlterado) {
+ 
+       Produto produto = repository.findById(id).get();
+       produto.setTitulo(produtoAlterado.getTitulo());
+       produto.setCodigoProduto(produtoAlterado.getCodigoProduto());
+       produto.setDescricao(produtoAlterado.getDescricao());
+       produto.setValorUnitario(produtoAlterado.getValorUnitario());
+       produto.setTempoMinEntrega(produtoAlterado.getTempoMinEntrega());
+       produto.setTempoMaxEntrega(produtoAlterado.getTempoMaxEntrega());
+
+       repository.save(produto);
+
+   }
+
 }
