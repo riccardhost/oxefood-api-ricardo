@@ -10,6 +10,7 @@ public class OxefoodApiRicardoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(OxefoodApiRicardoApplication.class, args);
+		
 	}
 
 }

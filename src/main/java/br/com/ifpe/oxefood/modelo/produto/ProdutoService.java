@@ -4,7 +4,6 @@ import jakarta.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -32,17 +31,27 @@ private ProdutoRepository repository;
 
     @Transactional
     public void update(Long id, Produto produtoAlterado) {
- 
-       Produto produto = repository.findById(id).get();
-       produto.setTitulo(produtoAlterado.getTitulo());
-       produto.setCodigoProduto(produtoAlterado.getCodigoProduto());
-       produto.setDescricao(produtoAlterado.getDescricao());
-       produto.setValorUnitario(produtoAlterado.getValorUnitario());
-       produto.setTempoMinEntrega(produtoAlterado.getTempoMinEntrega());
-       produto.setTempoMaxEntrega(produtoAlterado.getTempoMaxEntrega());
 
-       repository.save(produto);
+        Produto produto = repository.findById(id).get();
+        produto.setTitulo(produtoAlterado.getTitulo());
+        produto.setCodigoProduto(produtoAlterado.getCodigoProduto());
+        produto.setDescricao(produtoAlterado.getDescricao());
+        produto.setValorUnitario(produtoAlterado.getValorUnitario());
+        produto.setTempoMinEntrega(produtoAlterado.getTempoMinEntrega());
+        produto.setTempoMaxEntrega(produtoAlterado.getTempoMaxEntrega());
 
-   }
+        repository.save(produto);
+
+    }
+
+    @Transactional
+    public void delete(Long id) {
+
+        Produto produto = repository.findById(id).get();
+        produto.setHabilitado(Boolean.FALSE);
+
+        repository.save(produto);
+        
+    }
 
 }
