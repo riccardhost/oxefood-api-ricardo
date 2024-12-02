@@ -29,9 +29,9 @@ public class EntregadorRequest {
 
    private String foneFixo;
 
-   private String quantidadeEntrega;
+   private Integer quantidadeEntrega;
 
-   private String valorFrete;
+   private Double valorFrete;
 
    private String endereco;
 
@@ -47,7 +47,7 @@ public class EntregadorRequest {
 
    private String complemento;
 
-   private String ativo;
+   private Boolean ativo;
 
    public Entregador build() {
 

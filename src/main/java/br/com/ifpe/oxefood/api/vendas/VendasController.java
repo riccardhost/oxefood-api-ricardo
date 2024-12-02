@@ -1,4 +1,4 @@
-package br.com.ifpe.oxefood.api.entregador;
+package br.com.ifpe.oxefood.api.vendas;
 
 import java.util.List;
 
@@ -15,38 +15,38 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.ifpe.oxefood.modelo.entregador.Entregador;
-import br.com.ifpe.oxefood.modelo.entregador.EntregadorService;
+import br.com.ifpe.oxefood.modelo.vendas.Vendas;
+import br.com.ifpe.oxefood.modelo.vendas.VendasService;
 
 @RestController //API REQUEST
-@RequestMapping("/api/entregador")
+@RequestMapping("/api/vendas")
 @CrossOrigin //
-public class EntregadorController { //classe da Api que define a rota de cliente
-    
+public class VendasController { //classe da Api que define a rota das vendas
+
     @Autowired //cria um objt automaticamente 
-    private EntregadorService entregadorService;
+    private VendasService vendasService;
 
     @PostMapping //
-    public ResponseEntity<Entregador> save(@RequestBody EntregadorRequest request) {
+    public ResponseEntity<Vendas> save(@RequestBody VendasRequest request) {
 
-        Entregador entregador = entregadorService.save(request.build());
-        return new ResponseEntity<>(entregador, HttpStatus.CREATED);
+        Vendas vendas = vendasService.save(request.build());
+        return new ResponseEntity<>(vendas, HttpStatus.CREATED);
     }
 
     @GetMapping
-    public List<Entregador> listarTodos() {
-        return entregadorService.listarTodos();
+    public List<Vendas> listarTodos() {
+        return vendasService.listarTodos();
     }
 
     @GetMapping("/{id}")
-    public Entregador obterPorID(@PathVariable Long id) {
-        return entregadorService.obterPorID(id);
+    public Vendas obterPorID(@PathVariable Long id) {
+        return vendasService.obterPorID(id);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Entregador> update(@PathVariable("id") Long id, @RequestBody EntregadorRequest request) {
+    public ResponseEntity<Vendas> update(@PathVariable("id") Long id, @RequestBody VendasRequest request) {
 
-        entregadorService.update(id, request.build());
+        vendasService.update(id, request.build());
         return ResponseEntity.ok().build();
 
     }
@@ -54,7 +54,7 @@ public class EntregadorController { //classe da Api que define a rota de cliente
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
 
-        entregadorService.delete(id);
+        vendasService.delete(id);
         return ResponseEntity.ok().build();
     
    }

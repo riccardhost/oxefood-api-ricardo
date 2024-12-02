@@ -1,5 +1,6 @@
-package br.com.ifpe.oxefood.modelo.produto;
+package br.com.ifpe.oxefood.modelo.vendas;
 
+import java.time.LocalDate;
 import org.hibernate.annotations.SQLRestriction; /* Todas as anotações do JPA devem ser importadas do pacote */
 import br.com.ifpe.oxefood.util.entity.EntidadeAuditavel;
 import jakarta.persistence.Column;
@@ -11,32 +12,35 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity /* Ela transforma essa classe */
-@Table(name = "Produto") /* Essa classe cria uma tabela no BD */
+@Entity /* Ela transforma essa classe ...*/
+@Table(name = "Vendas") /* Essa classe cria uma tabela no BD */
 @SQLRestriction("habilitado = true") /* Vai acrescentar todas as consultas na tabela Cliente */
 @Builder
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Produto extends EntidadeAuditavel {
-    
+public class Vendas extends EntidadeAuditavel {
+
     @Column /* Faz com que crie uma coluna na tabela do BD */
-    private String titulo;
+    private String cliente;
 
     @Column
-    private String codigoProduto;
+    private String produto;
 
     @Column
-    private String descricao;
+    private String statusVenda;
 
     @Column
-    private String valorUnitario;
+    private LocalDate dataVenda;
 
     @Column
-    private String tempoMinEntrega;
+    private Double valorTotal;
 
     @Column
-    private String tempoMaxEntrega;
+    private String observacao;
+
+    @Column
+    private Boolean retiradaEmLoja;
 
 }

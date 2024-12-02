@@ -41,10 +41,10 @@ public class Entregador extends EntidadeAuditavel {
     private String foneFixo;
 
     @Column
-    private String quantidadeEntrega;
+    private Integer quantidadeEntrega;
 
     @Column
-    private String valorFrete;
+    private Double valorFrete;
 
     @Column
     private String endereco;
@@ -68,6 +68,6 @@ public class Entregador extends EntidadeAuditavel {
     private String complemento;
 
     @Column
-    private String ativo;
+    private Boolean ativo;
 
 }

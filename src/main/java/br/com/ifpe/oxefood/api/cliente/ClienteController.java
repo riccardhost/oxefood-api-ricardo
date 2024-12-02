@@ -1,5 +1,7 @@
 package br.com.ifpe.oxefood.api.cliente;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.ifpe.oxefood.modelo.cliente.Cliente;
 import br.com.ifpe.oxefood.modelo.cliente.ClienteService;
-import java.util.List;
 
 @RestController //API REQUEST
 @RequestMapping("/api/cliente")
@@ -29,7 +30,7 @@ public class ClienteController { //classe da Api que define a rota de cliente
     public ResponseEntity<Cliente> save(@RequestBody ClienteRequest request) {
 
         Cliente cliente = clienteService.save(request.build());
-        return new ResponseEntity<Cliente>(cliente, HttpStatus.CREATED);
+        return new ResponseEntity<>(cliente, HttpStatus.CREATED);
     }
 
     @GetMapping
