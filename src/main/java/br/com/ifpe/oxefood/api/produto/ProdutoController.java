@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.ifpe.oxefood.modelo.produto.Produto;
 import br.com.ifpe.oxefood.modelo.produto.ProdutoService;
+import jakarta.validation.Valid;
 
 @RestController //API REQUEST
 @RequestMapping("/api/produto")
@@ -27,7 +28,7 @@ public class ProdutoController {
     private ProdutoService produtoService;
 
     @PostMapping //
-    public ResponseEntity<Produto> save(@RequestBody ProdutoRequest request) {
+    public ResponseEntity<Produto> save(@RequestBody @Valid ProdutoRequest request) {
 
       Produto produto = produtoService.save(request.build());
       return new ResponseEntity<Produto>(produto, HttpStatus.CREATED);
