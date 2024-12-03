@@ -4,7 +4,11 @@ import jakarta.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import br.com.ifpe.oxefood.util.exception.EntidadeNaoEncontradaException;
+
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ClienteService {
@@ -27,9 +31,15 @@ public class ClienteService {
 
     public Cliente obterPorID(Long id) {
 
-        return repository.findById(id).get();
-    }   
-    
+       Optional<Cliente> consulta = repository.findById(id);
+  
+       if (consulta.isPresent()) {
+           return consulta.get();
+       } else {
+           throw new EntidadeNaoEncontradaException("Cliente", id);
+       }
+    }
+
     @Transactional
     public void update(Long id, Cliente clienteAlterado) {
 
