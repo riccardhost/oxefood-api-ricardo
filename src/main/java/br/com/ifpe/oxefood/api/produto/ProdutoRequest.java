@@ -22,16 +22,22 @@ public class ProdutoRequest {
    @Length(max = 50, message = "O título deverá ter no máximo {max} caracteres")
    private String titulo;
 
+   @NotBlank(message = "O código é de preenchimento obrigatório")
+   @Length(min = 4, message = "O título deverá ter no máximo {min} caracteres")
+   @Length(max = 10, message = "O título deverá ter no máximo {max} caracteres")
    private String codigoProduto;
 
    @NotBlank(message = "A descrição é de preenchimento obrigatório")
    private String descricao;
 
-   private String valorUnitario;
+   @NotBlank(message = "Por favor, informe o valor")
+   private Double valorUnitario;
 
-   private String tempoMinEntrega;
+   @NotBlank(message = "Por favor, informe o tempo mínimo")
+   private Integer tempoMinEntrega;
 
-   private String tempoMaxEntrega;
+   @NotBlank(message = "Por favor, informe o tempo máximo")
+   private Integer tempoMaxEntrega;
 
    public Produto build() {
 

@@ -4,7 +4,14 @@ import jakarta.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import br.com.ifpe.oxefood.modelo.produto.Produto;
+import br.com.ifpe.oxefood.util.exception.EntidadeNaoEncontradaException;
+import br.com.ifpe.oxefood.util.exception.EntregadorException;
+import br.com.ifpe.oxefood.util.exception.ProdutoException;
+
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EntregadorService {
@@ -14,6 +21,10 @@ public class EntregadorService {
 
     @Transactional //Abre um bloco de transação no banco de dados
     public Entregador save(Entregador entregador) {
+
+        if (entregador.getValorFrete() < 5) {
+            throw new ProdutoException(ProdutoException.MSG_VALOR_MINIMO_FRETE);
+        }
 
         entregador.setHabilitado(Boolean.TRUE);
         return repository.save(entregador);
@@ -26,7 +37,14 @@ public class EntregadorService {
 
     public Entregador obterPorID(Long id) {
 
-        return repository.findById(id).get();
+        Optional<Entregador> consulta = repository.findById(id);
+
+        if (consulta.isPresent()) {
+           return consulta.get();
+        } else {
+           throw new EntregadorException("Entregador", id);
+        }
+
     }
 
     @Transactional

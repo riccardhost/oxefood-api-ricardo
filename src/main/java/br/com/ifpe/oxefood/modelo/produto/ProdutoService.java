@@ -5,9 +5,11 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.ifpe.oxefood.util.exception.EntidadeNaoEncontradaException;
 import br.com.ifpe.oxefood.util.exception.ProdutoException;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProdutoService {
@@ -18,10 +20,10 @@ private ProdutoRepository repository;
     @Transactional //Abre um bloco de transação no banco de dados
     public Produto save(Produto produto) {
 
-        if (produto.getValorUnitario() < 10) {
+        if (produto.getValorUnitario() < 100) {
             throw new ProdutoException(ProdutoException.MSG_VALOR_MINIMO_PRODUTO);
         }
-  
+    
         produto.setHabilitado(Boolean.TRUE);
         return repository.save(produto);
     }
@@ -33,7 +35,13 @@ private ProdutoRepository repository;
 
     public Produto obterPorID(Long id) {
 
-        return repository.findById(id).get();
+            Optional<Produto> consulta = repository.findById(id);
+        
+            if (consulta.isPresent()) {
+                return consulta.get();
+            } else {
+                throw new EntidadeNaoEncontradaException("Produto", id);
+            }
     }
 
     @Transactional

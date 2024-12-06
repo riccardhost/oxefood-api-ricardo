@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.ifpe.oxefood.modelo.vendas.Vendas;
 import br.com.ifpe.oxefood.modelo.vendas.VendasService;
+import jakarta.validation.Valid;
 
 @RestController //API REQUEST
 @RequestMapping("/api/vendas")
@@ -27,7 +28,7 @@ public class VendasController { //classe da Api que define a rota das vendas
     private VendasService vendasService;
 
     @PostMapping //
-    public ResponseEntity<Vendas> save(@RequestBody VendasRequest request) {
+    public ResponseEntity<Vendas> save(@RequestBody @Valid VendasRequest request) {
 
         Vendas vendas = vendasService.save(request.build());
         return new ResponseEntity<>(vendas, HttpStatus.CREATED);
