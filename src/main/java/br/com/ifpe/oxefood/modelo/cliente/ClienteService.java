@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.ifpe.oxefood.util.exception.EntidadeNaoEncontradaException;
+import br.com.ifpe.oxefood.util.exception.ClienteException;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,6 +20,10 @@ public class ClienteService {
     @Transactional //Abre um bloco de transação no banco de dados
     public Cliente save(Cliente cliente) {
 
+        if (!cliente.getFoneCelular().startsWith("(81)")) {
+            throw new ClienteException(ClienteException.MSG_DDD_PERNAMBUCO);
+        }
+    
         cliente.setHabilitado(Boolean.TRUE);
         return repository.save(cliente);
 

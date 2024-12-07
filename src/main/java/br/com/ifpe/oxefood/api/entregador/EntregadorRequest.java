@@ -31,32 +31,44 @@ public class EntregadorRequest {
    @CPF
    private String cpf;
 
+   @NotBlank(message = "Por favor, informe o RG")
    private String rg;
 
    @JsonFormat(pattern = "dd/MM/yyyy")
    private LocalDate dataNascimento;
    
-   @Length(min = 8, max = 20, message = "O campo Fone tem que ter entre {min} e {max} caracteres")
+   @Length(min = 11, max = 15, message = "O campo Fone tem que ter entre {min} e {max} caracteres")
+   @NotBlank(message = "Por favor, informe o numero do celular")
    private String foneCelular;
 
+   @NotBlank(message = "Por favor, informe o numero do fixo")
    private String foneFixo;
 
+   @NotBlank(message = "Por favor, informe a quantidade de entrega")
    private Integer quantidadeEntrega;
-
+   
+   @NotBlank(message = "Por favor, informe o valor do frete")
    private Double valorFrete;
 
+   @NotBlank(message = "Por favor, informe o endereço")
    private String endereco;
 
+   @NotBlank(message = "Por favor, informe o número")
    private String numero;
 
+   @NotBlank(message = "Por favor, informe o bairro")
    private String bairro;
 
+   @NotBlank(message = "Por favor, informe o cidade")
    private String cidade;
 
+   @NotBlank(message = "Por favor, informe o CEP")
    private String cep;
 
+   @NotBlank(message = "Por favor, informe o estado")
    private String uf;
 
+   @NotBlank(message = "Por favor, informe o complemento")
    private String complemento;
 
    private Boolean ativo;

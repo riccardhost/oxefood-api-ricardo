@@ -34,7 +34,8 @@ public class ClienteRequest {
    @CPF
    private String cpf;
 
-   @Length(min = 8, max = 20, message = "O campo Fone tem que ter entre {min} e {max} caracteres")
+   @Length(min = 11, max = 15, message = "O campo Fone tem que ter entre {min} e {max} caracteres")
+   @NotBlank(message = "Por favor, informe o numero do celular")
    private String foneCelular;
 
    private String foneFixo;

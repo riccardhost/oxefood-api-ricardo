@@ -5,10 +5,8 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.ifpe.oxefood.modelo.produto.Produto;
 import br.com.ifpe.oxefood.util.exception.EntidadeNaoEncontradaException;
 import br.com.ifpe.oxefood.util.exception.EntregadorException;
-import br.com.ifpe.oxefood.util.exception.ProdutoException;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,14 +14,18 @@ import java.util.Optional;
 @Service
 public class EntregadorService {
 
-    @Autowired //instancia um obj do tipo repositório
-    private EntregadorRepository repository;
+@Autowired //instancia um obj do tipo repositório
+private EntregadorRepository repository;
 
     @Transactional //Abre um bloco de transação no banco de dados
     public Entregador save(Entregador entregador) {
 
         if (entregador.getValorFrete() < 5) {
-            throw new ProdutoException(ProdutoException.MSG_VALOR_MINIMO_FRETE);
+            throw new EntregadorException(EntregadorException.MSG_VALOR_MINIMO_FRETE);
+        }
+
+        if (!entregador.getFoneCelular().startsWith("(81)")) {
+            throw new EntregadorException(EntregadorException.MSG_DDD_PERNAMBUCO);
         }
 
         entregador.setHabilitado(Boolean.TRUE);
@@ -37,14 +39,13 @@ public class EntregadorService {
 
     public Entregador obterPorID(Long id) {
 
-        Optional<Entregador> consulta = repository.findById(id);
-
-        if (consulta.isPresent()) {
-           return consulta.get();
-        } else {
-           throw new EntregadorException("Entregador", id);
-        }
-
+         Optional<Entregador> consulta = repository.findById(id);
+        
+            if (consulta.isPresent()) {
+                return consulta.get();
+            } else {
+                throw new EntidadeNaoEncontradaException("Entregador", id);
+            }
     }
 
     @Transactional

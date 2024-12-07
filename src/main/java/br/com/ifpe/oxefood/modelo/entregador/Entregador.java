@@ -22,10 +22,10 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Entregador extends EntidadeAuditavel {
     
-    @Column /* Faz com que crie uma coluna na tabela do BD */
+    @Column(nullable = false, length = 100)
     private String nome;
 
-    @Column
+    @Column(unique = true)
     private String cpf;
 
     @Column
