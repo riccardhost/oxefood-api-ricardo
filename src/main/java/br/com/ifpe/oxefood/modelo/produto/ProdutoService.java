@@ -1,15 +1,14 @@
 package br.com.ifpe.oxefood.modelo.produto;
 
-import jakarta.transaction.Transactional;
+import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.ifpe.oxefood.util.exception.EntidadeNaoEncontradaException;
 import br.com.ifpe.oxefood.util.exception.ProdutoException;
-
-import java.util.List;
-import java.util.Optional;
+import jakarta.transaction.Transactional;
 
 @Service
 public class ProdutoService {
@@ -48,8 +47,9 @@ private ProdutoRepository repository;
     public void update(Long id, Produto produtoAlterado) {
 
         Produto produto = repository.findById(id).get();
+        produto.setCodigo(produtoAlterado.getCodigo());
+        produto.setCategoriaProduto(produtoAlterado.getCategoriaProduto());
         produto.setTitulo(produtoAlterado.getTitulo());
-        produto.setCodigoProduto(produtoAlterado.getCodigoProduto());
         produto.setDescricao(produtoAlterado.getDescricao());
         produto.setValorUnitario(produtoAlterado.getValorUnitario());
         produto.setTempoMinEntrega(produtoAlterado.getTempoMinEntrega());
