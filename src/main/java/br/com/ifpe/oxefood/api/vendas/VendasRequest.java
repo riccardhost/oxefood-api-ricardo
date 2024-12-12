@@ -2,7 +2,7 @@ package br.com.ifpe.oxefood.api.vendas;
 
 import java.time.LocalDate;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat; //Esta relacionado ao formato JSON da DATA DE NASCIMENTO
 
 import br.com.ifpe.oxefood.modelo.vendas.Vendas;
 import lombok.AllArgsConstructor;
