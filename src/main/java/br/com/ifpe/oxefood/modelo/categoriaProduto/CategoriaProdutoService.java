@@ -30,13 +30,13 @@ public class CategoriaProdutoService {
 
     public CategoriaProduto obterPorID(Long id) {
 
-       Optional<CategoriaProduto> consulta = repository.findById(id);
-  
-       if (consulta.isPresent()) {
-           return consulta.get();
-       } else {
-           throw new EntidadeNaoEncontradaException("CategoriaProduto", id);
-       }
+        Optional<CategoriaProduto> consulta = repository.findById(id);
+    
+        if (consulta.isPresent()) {
+            return consulta.get();
+        } else {
+            throw new EntidadeNaoEncontradaException("CategoriaProduto", id);
+        }
     }
 
     @Transactional

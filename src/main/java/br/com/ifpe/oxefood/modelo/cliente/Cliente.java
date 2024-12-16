@@ -1,10 +1,13 @@
 package br.com.ifpe.oxefood.modelo.cliente;
 
+import java.util.List;
 import java.time.LocalDate;
 import org.hibernate.annotations.SQLRestriction; /* Todas as anotações do JPA devem ser importadas do pacote */
 import br.com.ifpe.oxefood.util.entity.EntidadeAuditavel;
 import jakarta.persistence.Column; /* Todas as anotações do JPA devem ser importadas do pacote */
 import jakarta.persistence.Entity; /* Todas as anotações do JPA devem ser importadas do pacote */
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table; /* Todas as anotações do JPA devem ser importadas do pacote */
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,6 +24,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Cliente extends EntidadeAuditavel {
+
+    @OneToMany(mappedBy = "cliente", orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<EnderecoCliente> enderecos;
 
     @Column(nullable = false, length = 100)
     private String nome;
