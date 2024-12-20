@@ -33,7 +33,7 @@ public class ClienteService {
     @Transactional //Abre um bloco de transação no banco de dados
     public Cliente save(Cliente cliente) {
 
-    usuarioService.save(cliente.getUsuario());
+        usuarioService.save(cliente.getUsuario());
 
         for (Perfil perfil : cliente.getUsuario().getRoles()) {
             perfil.setHabilitado(Boolean.TRUE);
