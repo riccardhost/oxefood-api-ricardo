@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.ifpe.oxefood.modelo.acesso.UsuarioService;
 import br.com.ifpe.oxefood.modelo.cliente.Cliente;
 import br.com.ifpe.oxefood.modelo.cliente.ClienteService;
 import br.com.ifpe.oxefood.modelo.cliente.EnderecoCliente;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 
 @RestController //API REQUEST
@@ -28,10 +30,13 @@ public class ClienteController { //classe da Api que define a rota de cliente
     @Autowired //cria um objt automaticamente 
     private ClienteService clienteService;
 
-    @PostMapping //
-    public ResponseEntity<Cliente> save(@RequestBody @Valid ClienteRequest request) {
+    @Autowired
+    private UsuarioService usuarioService;
 
-        Cliente cliente = clienteService.save(request.build());
+    @PostMapping //
+    public ResponseEntity<Cliente> save(@RequestBody @Valid ClienteRequest clienteRequest, HttpServletRequest request) {
+
+        Cliente cliente = clienteService.save(clienteRequest.build(), usuarioService.obterUsuarioLogado(request));
         return new ResponseEntity<>(cliente, HttpStatus.CREATED);
     }
 
@@ -46,11 +51,10 @@ public class ClienteController { //classe da Api que define a rota de cliente
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Cliente> update(@PathVariable("id") Long id, @RequestBody ClienteRequest request) {
+    public ResponseEntity<Cliente> update(@PathVariable("id") Long id, @RequestBody ClienteRequest clienteRequest, HttpServletRequest request) {
 
-        clienteService.update(id, request.build());
+        clienteService.update(id, clienteRequest.build(), usuarioService.obterUsuarioLogado(request));
         return ResponseEntity.ok().build();
-
     }
 
     @DeleteMapping("/{id}")

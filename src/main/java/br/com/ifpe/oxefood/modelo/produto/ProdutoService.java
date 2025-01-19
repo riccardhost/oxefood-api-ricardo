@@ -19,13 +19,44 @@ private ProdutoRepository repository;
     @Transactional //Abre um bloco de transação no banco de dados
     public Produto save(Produto produto) {
 
-        if (produto.getValorUnitario() < 100) {
+        if (produto.getValorUnitario() < 10) {
             throw new ProdutoException(ProdutoException.MSG_VALOR_MINIMO_PRODUTO);
         }
     
         produto.setHabilitado(Boolean.TRUE);
         return repository.save(produto);
     }
+
+    /* 
+    public List<Produto> filtrar(String codigo, String titulo, Long idCategoria) {
+
+        List<Produto> listaProdutos = repository.findAll();
+
+        
+        if ((codigo != null && !"".equals(codigo)) &&
+            (titulo == null || "".equals(titulo)) &&
+            (idCategoria == null)) {
+                listaProdutos = repository.consultarPorCodigo(codigo);
+        } else if (
+            (codigo == null || "".equals(codigo)) &&
+            (titulo != null && !"".equals(titulo)) &&
+            (idCategoria == null)) {    
+                listaProdutos = repository.findByTituloContainingIgnoreCaseOrderByTituloAsc(titulo);
+        } else if (
+            (codigo == null || "".equals(codigo)) &&
+            (titulo == null || "".equals(titulo)) &&
+            (idCategoria != null)) {
+                listaProdutos = repository.consultarPorCategoria(idCategoria); 
+        } else if (
+            (codigo == null || "".equals(codigo)) &&
+            (titulo != null && !"".equals(titulo)) &&
+            (idCategoria != null)) {
+                listaProdutos = repository.consultarPorTituloECategoria(titulo, idCategoria); 
+        }
+
+        return listaProdutos;
+    }
+    */
 
     public List<Produto> listarTodos() {
   

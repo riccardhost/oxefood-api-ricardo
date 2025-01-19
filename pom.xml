@@ -51,7 +51,8 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-hateoas</artifactId>
 		</dependency>
-				
+		
+		<!-- Dependência responsável pela Segurança e Proteção - 17/DEZ/2024 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
