@@ -26,11 +26,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ClienteRequest {
 
-    @NotBlank(message = "O e-mail é de preenchimento obrigatório")
+    @NotBlank(message = "O e-mail é de preenchimento obrigatório!")
     @Email
     private String email;
 
-    @NotBlank(message = "A senha é de preenchimento obrigatório")
+    @NotBlank(message = "A senha é de preenchimento obrigatório!")
     private String password;
     
     public Usuario buildUsuario() {
